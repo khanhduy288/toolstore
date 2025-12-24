@@ -1,0 +1,168 @@
+import "./Home.css";
+
+export default function Home() {
+  return (
+    <div className="home">
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-content">
+          <h1>Giải pháp Tool & Dịch vụ hệ thống</h1>
+          <p>
+            Cung cấp tool automation, marketing, VPS/Server và thiết kế website
+            chuyên nghiệp – ổn định – bảo mật.
+          </p>
+          <div className="hero-actions">
+            <button className="btn-primary">Xem sản phẩm</button>
+            <button className="btn-outline">Liên hệ tư vấn</button>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="section section-soft">
+        <div className="section-head">
+          <h2>Dịch vụ & giải pháp</h2>
+          <p>Giải pháp công nghệ toàn diện cho cá nhân & doanh nghiệp</p>
+        </div>
+
+        <div className="grid grid-4">
+          <div className="service-box">
+            <div className="service-icon">⚙️</div>
+            <h3>Tool Automation</h3>
+            <ul>
+              <li>Tự động hoá quy trình</li>
+              <li>Tiết kiệm thời gian</li>
+            </ul>
+            <span className="service-link">Khám phá →</span>
+          </div>
+
+          <div className="service-box">
+            <div className="service-icon">📈</div>
+            <h3>Tool Marketing</h3>
+            <ul>
+              <li>Facebook, Zalo, Email</li>
+              <li>Tăng chuyển đổi</li>
+            </ul>
+            <span className="service-link">Khám phá →</span>
+          </div>
+
+          <div className="service-box">
+            <div className="service-icon">🖥️</div>
+            <h3>VPS / Server</h3>
+            <ul>
+              <li>Uptime cao</li>
+              <li>Chạy tool & web</li>
+            </ul>
+            <span className="service-link">Khám phá →</span>
+          </div>
+
+          <div className="service-box">
+            <div className="service-icon">🌐</div>
+            <h3>Thiết kế Website</h3>
+            <ul>
+              <li>Chuẩn SEO</li>
+              <li>React / WordPress</li>
+            </ul>
+            <span className="service-link">Khám phá →</span>
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCTS */}
+      <section className="section">
+        <div className="section-head">
+          <h2>Sản phẩm nổi bật</h2>
+          <p>Được nhiều khách hàng tin dùng</p>
+        </div>
+
+        <div className="grid grid-3">
+          <div className="product-card">
+            <span className="badge">Bán chạy</span>
+            <div className="product-img"></div>
+            <h3>Tool Reg Mail Pro</h3>
+            <p>Đăng ký mail tự động, ổn định</p>
+            <div className="product-footer">
+              <strong>299.000đ</strong>
+              <button>Xem chi tiết</button>
+            </div>
+          </div>
+
+          <div className="product-card">
+            <span className="badge blue">Hot</span>
+            <div className="product-img"></div>
+            <h3>Tool Automation Facebook</h3>
+            <p>Tự động tương tác, quản lý tài khoản</p>
+            <div className="product-footer">
+              <strong>499.000đ</strong>
+              <button>Xem chi tiết</button>
+            </div>
+          </div>
+
+          <div className="product-card">
+            <span className="badge green">Ổn định</span>
+            <div className="product-img"></div>
+            <h3>VPS Basic</h3>
+            <p>Phù hợp chạy tool & web nhỏ</p>
+            <div className="product-footer">
+              <strong>199.000đ / tháng</strong>
+              <button>Xem chi tiết</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST */}
+        <section className="section section-dark compact">
+        <div className="grid grid-4">
+            <div className="trust-card">
+            <span className="icon">🚀</span>
+            <div>
+                <h4>Triển khai nhanh</h4>
+                <p>3 - 20 ngày làm việc tùy vào dự án </p>
+            </div>
+            </div>
+
+            <div className="trust-card">
+            <span className="icon">🔒</span>
+            <div>
+                <h4>Bảo mật tốt</h4>
+                <p>An toàn dữ liệu</p>
+            </div>
+            </div>
+
+            <div className="trust-card">
+            <span className="icon">💬</span>
+            <div>
+                <h4>Hỗ trợ 24/7</h4>
+                <p>Hỗ trợ kỹ thuật</p>
+            </div>
+            </div>
+
+            <div className="trust-card">
+            <span className="icon">💰</span>
+            <div>
+                <h4>Giá tốt, minh bạch</h4>
+                <p>Không chi phí ẩn</p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+      {/* PROCESS */}
+      <section className="section">
+        <div className="section-head">
+          <h2>Quy trình làm việc</h2>
+        </div>
+
+        <div className="grid grid-4">
+          <div className="step-card">1. Tiếp nhận yêu cầu</div>
+          <div className="step-card">2. Tư vấn giải pháp & báo giá</div>
+          <div className="step-card">3. Triển khai</div>
+          <div className="step-card">4. Bàn giao & hỗ trợ</div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
