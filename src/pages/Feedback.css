@@ -1,0 +1,32 @@
+.feedback-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.feedback-grid img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transition: all .25s ease;
+  cursor: zoom-in;
+}
+
+.feedback-grid img:hover {
+  transform: scale(1.04);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .feedback-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .feedback-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -27,6 +27,7 @@ export default function Header() {
           <NavLink to="/" end>Trang chủ</NavLink>
           <NavLink to="/products">Sản phẩm</NavLink>
           <NavLink to="/services">Dịch vụ</NavLink>
+          <NavLink to="/feedback">Feedback</NavLink>
         </nav>
 
         {/* Desktop auth */}
@@ -43,7 +44,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       <nav className={`mobile-menu ${open ? "open" : ""}`}>
-        {/* ❌ CLOSE BUTTON */}
+        {/* CLOSE BUTTON */}
         <button
           className="mobile-menu__close"
           onClick={() => setOpen(false)}
@@ -60,6 +61,9 @@ export default function Header() {
         </NavLink>
         <NavLink to="/services" onClick={() => setOpen(false)}>
           Dịch vụ
+        </NavLink>
+        <NavLink to="/feedback" onClick={() => setOpen(false)}>
+          Feedback
         </NavLink>
 
         <div className="mobile-auth">

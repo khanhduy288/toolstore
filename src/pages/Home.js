@@ -1,6 +1,9 @@
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="home">
 
@@ -13,8 +16,21 @@ export default function Home() {
             chuyên nghiệp – ổn định – bảo mật.
           </p>
           <div className="hero-actions">
-            <button className="btn-primary">Xem sản phẩm</button>
-            <button className="btn-outline">Liên hệ tư vấn</button>
+            <button
+              className="btn-primary"
+              onClick={() => navigate("/products")}
+            >
+              Xem sản phẩm
+            </button>
+
+            <a
+              href="https://zalo.me/0918110368"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              Liên hệ tư vấn
+            </a>
           </div>
         </div>
       </section>
@@ -34,7 +50,12 @@ export default function Home() {
               <li>Tự động hoá quy trình</li>
               <li>Tiết kiệm thời gian</li>
             </ul>
-            <span className="service-link">Khám phá →</span>
+            <span
+              className="service-link"
+              onClick={() => navigate("/products")}
+            >
+              Khám phá →
+            </span>
           </div>
 
           <div className="service-box">
@@ -44,7 +65,12 @@ export default function Home() {
               <li>Facebook, Zalo, Email</li>
               <li>Tăng chuyển đổi</li>
             </ul>
-            <span className="service-link">Khám phá →</span>
+            <span
+              className="service-link"
+              onClick={() => navigate("/products")}
+            >
+              Khám phá →
+            </span>
           </div>
 
           <div className="service-box">
@@ -54,7 +80,12 @@ export default function Home() {
               <li>Uptime cao</li>
               <li>Chạy tool & web</li>
             </ul>
-            <span className="service-link">Khám phá →</span>
+            <span
+              className="service-link"
+              onClick={() => navigate("/products")}
+            >
+              Khám phá →
+            </span>
           </div>
 
           <div className="service-box">
@@ -64,7 +95,12 @@ export default function Home() {
               <li>Chuẩn SEO</li>
               <li>React / WordPress</li>
             </ul>
-            <span className="service-link">Khám phá →</span>
+            <span
+              className="service-link"
+              onClick={() => navigate("/products")}
+            >
+              Khám phá →
+            </span>
           </div>
         </div>
       </section>
@@ -84,7 +120,9 @@ export default function Home() {
             <p>Đăng ký mail tự động, ổn định</p>
             <div className="product-footer">
               <strong>299.000đ</strong>
-              <button>Xem chi tiết</button>
+              <button onClick={() => navigate("/products")}>
+                Xem chi tiết
+              </button>
             </div>
           </div>
 
@@ -95,7 +133,9 @@ export default function Home() {
             <p>Tự động tương tác, quản lý tài khoản</p>
             <div className="product-footer">
               <strong>499.000đ</strong>
-              <button>Xem chi tiết</button>
+              <button onClick={() => navigate("/products")}>
+                Xem chi tiết
+              </button>
             </div>
           </div>
 
@@ -106,48 +146,50 @@ export default function Home() {
             <p>Phù hợp chạy tool & web nhỏ</p>
             <div className="product-footer">
               <strong>199.000đ / tháng</strong>
-              <button>Xem chi tiết</button>
+              <button onClick={() => navigate("/products")}>
+                Xem chi tiết
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       {/* TRUST */}
-        <section className="section section-dark compact">
+      <section className="section section-dark compact">
         <div className="grid grid-4">
-            <div className="trust-card">
+          <div className="trust-card">
             <span className="icon">🚀</span>
             <div>
-                <h4>Triển khai nhanh</h4>
-                <p>3 - 20 ngày làm việc tùy vào dự án </p>
+              <h4>Triển khai nhanh</h4>
+              <p>3 - 20 ngày làm việc tùy vào dự án</p>
             </div>
-            </div>
+          </div>
 
-            <div className="trust-card">
+          <div className="trust-card">
             <span className="icon">🔒</span>
             <div>
-                <h4>Bảo mật tốt</h4>
-                <p>An toàn dữ liệu</p>
+              <h4>Bảo mật tốt</h4>
+              <p>An toàn dữ liệu</p>
             </div>
-            </div>
+          </div>
 
-            <div className="trust-card">
+          <div className="trust-card">
             <span className="icon">💬</span>
             <div>
-                <h4>Hỗ trợ 24/7</h4>
-                <p>Hỗ trợ kỹ thuật</p>
+              <h4>Hỗ trợ 24/7</h4>
+              <p>Hỗ trợ kỹ thuật</p>
             </div>
-            </div>
+          </div>
 
-            <div className="trust-card">
+          <div className="trust-card">
             <span className="icon">💰</span>
             <div>
-                <h4>Giá tốt, minh bạch</h4>
-                <p>Không chi phí ẩn</p>
+              <h4>Giá tốt, minh bạch</h4>
+              <p>Không chi phí ẩn</p>
             </div>
-            </div>
+          </div>
         </div>
-        </section>
+      </section>
 
       {/* PROCESS */}
       <section className="section">
@@ -162,6 +204,16 @@ export default function Home() {
           <div className="step-card">4. Bàn giao & hỗ trợ</div>
         </div>
       </section>
+
+      {/* FLOATING ZALO */}
+      <a
+        href="https://zalo.me/0918110368"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="zalo-float"
+      >
+        <img src="/images/zalo1.png" alt="Zalo chat" />
+      </a>
 
     </div>
   );
