@@ -1,0 +1,88 @@
+const products = [
+  {
+    id: 1,
+    name: "Tool Regmail",
+    desc: "Tự động đăng kí mail bằng selenium trình duyệt sử dụng proxy, tiết kiệm thời gian & công sức.",
+    price: "299.000đ",
+    badge: "Tool",
+    badgeColor: "blue",
+    image: "/images/products/regmail.png",
+    features: [
+      "Tự động đăng ký email",
+      "Hạn chế checkpoint",
+      "Dễ sử dụng",
+    ],
+  },
+  {
+    id: 2,
+    name: "Tool Automation Mua Hàng",
+    desc: "Tự động mua sản phẩm từ các sàn thương mại điện tử, website.",
+    price: "499.000đ",
+    badge: "Tool",
+    badgeColor: "green",
+    image: "/images/products/autobuy.png",
+    features: [
+      "Tự động đặt hàng",
+      "Hỗ trợ nhiều sàn TMĐT",
+      "Tùy chỉnh số lượng & thời gian",
+    ],
+  },
+  {
+    id: 3,
+    name: "Website Bán Hàng Mẫu",
+    desc: "Giao diện hiện đại, tối ưu chuyển đổi, dùng ngay.",
+    price: "2.000.000đ",
+    badge: "Web",
+    badgeColor: "blue",
+    image: "/images/products/webbanhang.png",
+    features: [
+      "Giao diện hiện đại",
+      "Chuẩn SEO",
+      "Dễ mở rộng & nâng cấp",
+    ],
+  },
+  {
+    id: 4,
+    name: "Website Theo Yêu Cầu",
+    desc: "Thiết kế & lập trình theo nhu cầu riêng của bạn.",
+    price: "Liên hệ",
+    badge: "Dịch vụ",
+    badgeColor: "red",
+    image: "/images/products/webtheoyeucau.png",
+    features: [
+      "Thiết kế theo yêu cầu",
+      "Tối ưu hiệu năng",
+      "Bảo trì & hỗ trợ",
+    ],
+  },
+  {
+    id: 5,
+    name: "Tool Craw Data",
+    desc: "Craw data được mã hóa bảo mật như web truyện, tin nhắn Zalo, các loại data khó.",
+    price: "1.999.000đ",
+    badge: "Tool",
+    badgeColor: "green",
+    image: "/images/products/crawdata.png",
+    features: [
+      "Craw dữ liệu bảo mật",
+      "Hỗ trợ nhiều nguồn",
+      "Xuất dữ liệu linh hoạt",
+    ],
+  },
+  {
+    id: 6,
+    name: "VPS-Server",
+    desc: "Phù hợp web nhỏ và tool, HĐH Linux Ubuntu.",
+    price: "199.000đ",
+    badge: "Web",
+    badgeColor: "blue",
+    image: "/images/products/vpsserver.png",
+    features: [
+      "Uptime cao",
+      "SSD tốc độ cao",
+      "Hỗ trợ 24/7",
+    ],
+  },
+];
+
+export default products;

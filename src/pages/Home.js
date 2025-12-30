@@ -1,12 +1,14 @@
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import products from "../data/products";
 
 export default function Home() {
   const navigate = useNavigate();
 
+  const featuredProducts = products.slice(0, 3);
+
   return (
     <div className="home">
-
       {/* HERO */}
       <section className="hero">
         <div className="hero-content">
@@ -15,6 +17,7 @@ export default function Home() {
             Cung cấp tool automation, marketing, VPS/Server và thiết kế website
             chuyên nghiệp – ổn định – bảo mật.
           </p>
+
           <div className="hero-actions">
             <button
               className="btn-primary"
@@ -50,10 +53,7 @@ export default function Home() {
               <li>Tự động hoá quy trình</li>
               <li>Tiết kiệm thời gian</li>
             </ul>
-            <span
-              className="service-link"
-              onClick={() => navigate("/products")}
-            >
+            <span className="service-link" onClick={() => navigate("/products")}>
               Khám phá →
             </span>
           </div>
@@ -65,10 +65,7 @@ export default function Home() {
               <li>Facebook, Zalo, Email</li>
               <li>Tăng chuyển đổi</li>
             </ul>
-            <span
-              className="service-link"
-              onClick={() => navigate("/products")}
-            >
+            <span className="service-link" onClick={() => navigate("/products")}>
               Khám phá →
             </span>
           </div>
@@ -80,10 +77,7 @@ export default function Home() {
               <li>Uptime cao</li>
               <li>Chạy tool & web</li>
             </ul>
-            <span
-              className="service-link"
-              onClick={() => navigate("/products")}
-            >
+            <span className="service-link" onClick={() => navigate("/products")}>
               Khám phá →
             </span>
           </div>
@@ -95,10 +89,7 @@ export default function Home() {
               <li>Chuẩn SEO</li>
               <li>React / WordPress</li>
             </ul>
-            <span
-              className="service-link"
-              onClick={() => navigate("/products")}
-            >
+            <span className="service-link" onClick={() => navigate("/products")}>
               Khám phá →
             </span>
           </div>
@@ -113,44 +104,29 @@ export default function Home() {
         </div>
 
         <div className="grid grid-3">
-          <div className="product-card">
-            <span className="badge">Bán chạy</span>
-            <div className="product-img"></div>
-            <h3>Tool Reg Mail Pro</h3>
-            <p>Đăng ký mail tự động, ổn định</p>
-            <div className="product-footer">
-              <strong>299.000đ</strong>
-              <button onClick={() => navigate("/products")}>
-                Xem chi tiết
-              </button>
-            </div>
-          </div>
+          {featuredProducts.map((product, index) => (
+            <div className="product-card" key={product.id}>
+              <span className={`badge ${index === 1 ? "blue" : index === 2 ? "green" : ""}`}>
+                Nổi bật
+              </span>
 
-          <div className="product-card">
-            <span className="badge blue">Hot</span>
-            <div className="product-img"></div>
-            <h3>Tool Automation Facebook</h3>
-            <p>Tự động tương tác, quản lý tài khoản</p>
-            <div className="product-footer">
-              <strong>499.000đ</strong>
-              <button onClick={() => navigate("/products")}>
-                Xem chi tiết
-              </button>
-            </div>
-          </div>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="product-img"
+              />
 
-          <div className="product-card">
-            <span className="badge green">Ổn định</span>
-            <div className="product-img"></div>
-            <h3>VPS Basic</h3>
-            <p>Phù hợp chạy tool & web nhỏ</p>
-            <div className="product-footer">
-              <strong>199.000đ / tháng</strong>
-              <button onClick={() => navigate("/products")}>
-                Xem chi tiết
-              </button>
+              <h3>{product.name}</h3>
+              <p>{product.desc}</p>
+
+              <div className="product-footer">
+                <strong>{product.price}</strong>
+                <button onClick={() => navigate(`/product/${product.id}`)}>
+                  Xem chi tiết
+                </button>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -161,7 +137,7 @@ export default function Home() {
             <span className="icon">🚀</span>
             <div>
               <h4>Triển khai nhanh</h4>
-              <p>3 - 20 ngày làm việc tùy vào dự án</p>
+              <p>3 - 20 ngày làm việc tùy dự án</p>
             </div>
           </div>
 
@@ -199,7 +175,7 @@ export default function Home() {
 
         <div className="grid grid-4">
           <div className="step-card">1. Tiếp nhận yêu cầu</div>
-          <div className="step-card">2. Tư vấn giải pháp & báo giá</div>
+          <div className="step-card">2. Tư vấn & báo giá</div>
           <div className="step-card">3. Triển khai</div>
           <div className="step-card">4. Bàn giao & hỗ trợ</div>
         </div>
@@ -214,7 +190,6 @@ export default function Home() {
       >
         <img src="/images/zalo1.png" alt="Zalo chat" />
       </a>
-
     </div>
   );
 }

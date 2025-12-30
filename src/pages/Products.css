@@ -1,88 +1,138 @@
-/* ================= PRODUCTS PAGE ================= */
+/* ================= COMMON ================= */
 
-.products-page {
+.products-page,
+.product-detail-page {
   overflow-x: hidden;
 }
 
-/* PRODUCT DESC */
-.products-page .product-desc {
+.section-head h2 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.section-head p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ================= PRODUCT GRID ================= */
+
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+/* ================= PRODUCT CARD ================= */
+
+.product-card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  transition: 0.25s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.product-desc {
+  font-size: 14px;
   color: #64748b;
   min-height: 52px;
 }
 
-/* BUTTON FIX */
-.products-page .btn-outline {
+/* ================= BADGE ================= */
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.badge.blue {
+  background: #2563eb;
+}
+
+.badge.green {
+  background: #16a34a;
+}
+
+.badge.red {
+  background: #dc2626;
+}
+
+/* ================= PRODUCT FOOTER ================= */
+
+.product-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.product-footer strong {
+  font-size: 15px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn-primary,
+.btn-outline {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background: #2563eb;
+  padding: 10px 14px;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-outline {
   background: transparent;
   border: 1px solid #2563eb;
   color: #2563eb;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
 }
 
-.products-page .btn-primary {
+.btn-outline:hover {
   background: #2563eb;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
+  color: #fff;
 }
 
-/* ================= MODAL ================= */
-
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 99;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  width: 90%;
-  max-width: 420px;
-  border-radius: 18px;
-  padding: 28px;
-  z-index: 100;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.modal h3 {
-  margin-bottom: 6px;
-}
-
-.modal-product {
-  color: #2563eb;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.modal form input,
-.modal form textarea {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #cbd5f5;
-}
-
-.modal form textarea {
-  min-height: 80px;
-  resize: none;
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  border: none;
-  background: none;
-  font-size: 24px;
-  cursor: pointer;
+.btn-primary:active,
+.btn-outline:active {
+  transform: scale(0.97);
 }

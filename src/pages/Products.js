@@ -1,77 +1,80 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import products from "../data/products";
 import "./Products.css";
 
-const products = [
-  {
-    id: 1,
-    name: "Tool Auto Đăng Bài",
-    desc: "Tự động đăng bài đa nền tảng, tiết kiệm thời gian & công sức.",
-    price: "299.000đ",
-    badge: "Tool",
-    badgeColor: "blue",
-  },
-  {
-    id: 2,
-    name: "Tool Quản Lý Tài Khoản",
-    desc: "Quản lý nhiều tài khoản, bảo mật & chống checkpoint.",
-    price: "499.000đ",
-    badge: "Tool",
-    badgeColor: "green",
-  },
-  {
-    id: 3,
-    name: "Website Bán Hàng Mẫu",
-    desc: "Giao diện hiện đại, tối ưu chuyển đổi, dùng ngay.",
-    price: "1.500.000đ",
-    badge: "Web",
-    badgeColor: "blue",
-  },
-  {
-    id: 4,
-    name: "Website Theo Yêu Cầu",
-    desc: "Thiết kế & lập trình theo nhu cầu riêng của bạn.",
-    price: "Liên hệ",
-    badge: "Dịch vụ",
-    badgeColor: "red",
-  },
-];
+const API = "https://63e1d6414324b12d963f5108.mockapi.io/api/v11/donhang";
 
-export default function Products() {
-  const [open, setOpen] = useState(false);
+function Products() {
+  const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [loading, setLoading] = useState(false); // 👈 spinner
 
-  const openModal = (product) => {
-    setSelectedProduct(product);
-    setOpen(true);
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    note: "",
+  });
+
+  const handleBuy = (product) => {
+    if (product.price === "Liên hệ") {
+      window.open("https://zalo.me/0918110368", "_blank");
+    } else {
+      setSelectedProduct(product);
+    }
   };
 
-  const closeModal = () => {
-    setOpen(false);
-    setSelectedProduct(null);
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Đã gửi yêu cầu, mình sẽ liên hệ sớm!");
-    closeModal();
-  };
 
-  const openZalo = () => {
-    window.open("https://zalo.me/0918110368", "_blank");
+    if (!form.name || !form.phone) {
+      alert("Vui lòng nhập họ tên và số điện thoại");
+      return;
+    }
+
+    try {
+      setLoading(true); // 👈 bắt đầu xoay
+
+      await axios.post(API, {
+        productId: selectedProduct.id,
+        productName: selectedProduct.name,
+        price: selectedProduct.price,
+        customerName: form.name,
+        phone: form.phone,
+        email: form.email,
+        note: form.note,
+        status: "new",
+        createdAt: new Date().toISOString(),
+      });
+
+      alert("Đã gửi yêu cầu mua hàng ✔");
+
+      setSelectedProduct(null);
+      setForm({
+        name: "",
+        phone: "",
+        email: "",
+        note: "",
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Gửi đơn thất bại");
+    } finally {
+      setLoading(false); // 👈 dừng xoay
+    }
   };
 
   return (
     <div className="products-page">
-      {/* HERO */}
-      <section className="hero">
-        <h1>Tool & Web Giải Pháp Số</h1>
-        <p>
-          Cung cấp các công cụ tự động hóa và website hiện đại giúp bạn tăng
-          hiệu suất và tối ưu chi phí.
-        </p>
-      </section>
-
-      {/* PRODUCTS */}
       <section className="section section-soft">
         <div className="section-head">
           <h2>Danh sách sản phẩm</h2>
@@ -83,7 +86,7 @@ export default function Products() {
             <div className="product-card" key={p.id}>
               <span className={`badge ${p.badgeColor}`}>{p.badge}</span>
 
-              <div className="product-img"></div>
+              <img src={p.image} alt={p.name} className="product-img" />
 
               <h3>{p.name}</h3>
               <p className="product-desc">{p.desc}</p>
@@ -91,50 +94,86 @@ export default function Products() {
               <div className="product-footer">
                 <strong>{p.price}</strong>
 
-                {p.price === "Liên hệ" ? (
-                  <button className="btn-outline" onClick={openZalo}>
-                    Liên hệ
+                <div className="product-actions">
+                  <button
+                    className="btn-outline"
+                    onClick={() => navigate(`/product/${p.id}`)}
+                  >
+                    Xem chi tiết
                   </button>
-                ) : (
+
                   <button
                     className="btn-primary"
-                    onClick={() => openModal(p)}
+                    onClick={() => handleBuy(p)}
                   >
-                    Mua ngay
+                    {p.price === "Liên hệ" ? "Liên hệ" : "Mua ngay"}
                   </button>
-                )}
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* MODAL */}
-      {open && (
-        <>
-          <div className="modal-overlay" onClick={closeModal} />
-
-          <div className="modal">
-            <button className="modal-close" onClick={closeModal}>
+      {/* ================= MODAL MUA NGAY ================= */}
+      {selectedProduct && (
+        <div
+          className="modal-overlay"
+          onClick={() => !loading && setSelectedProduct(null)}
+        >
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="modal-close"
+              onClick={() => !loading && setSelectedProduct(null)}
+              disabled={loading}
+            >
               ×
             </button>
 
-            <h3>Mua sản phẩm</h3>
-            <p className="modal-product">{selectedProduct?.name}</p>
+            <h3>Đặt mua sản phẩm</h3>
+            <p className="modal-product">{selectedProduct.name}</p>
 
             <form onSubmit={handleSubmit}>
-              <input placeholder="Họ và tên" required />
-              <input placeholder="Số điện thoại" required />
-              <input placeholder="Email" />
-              <textarea placeholder="Ghi chú thêm..." />
+              <input
+                name="name"
+                placeholder="Họ tên"
+                value={form.name}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              />
+              <input
+                name="phone"
+                placeholder="Số điện thoại"
+                value={form.phone}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              />
+              <input
+                name="email"
+                placeholder="Email"
+                value={form.email}
+                onChange={handleChange}
+                disabled={loading}
+              />
+              <textarea
+                name="note"
+                placeholder="Ghi chú thêm (nếu có)"
+                value={form.note}
+                onChange={handleChange}
+                disabled={loading}
+              />
 
-              <button type="submit" className="btn-primary">
-                Gửi yêu cầu
+              <button className="btn-primary" type="submit" disabled={loading}>
+                {loading ? <span className="spinner"></span> : "Gửi yêu cầu"}
               </button>
             </form>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
 }
+
+export default Products;

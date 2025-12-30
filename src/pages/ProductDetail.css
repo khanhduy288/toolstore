@@ -1,0 +1,260 @@
+/* ================= PRODUCT DETAIL PAGE ================= */
+
+.product-detail-page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 48px 20px;
+}
+
+/* ================= PRODUCT DETAIL CARD ================= */
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= IMAGE ================= */
+
+.product-detail img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ================= INFO ================= */
+
+.product-detail h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
+
+.product-detail-price {
+  font-size: 20px;
+  color: #2563eb;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.product-detail-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 22px;
+}
+
+/* ================= FEATURES ================= */
+
+.product-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 28px;
+}
+
+.product-features li {
+  padding-left: 26px;
+  margin-bottom: 12px;
+  position: relative;
+  font-size: 14px;
+  color: #334155;
+}
+
+.product-features li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: #16a34a;
+  font-weight: 700;
+}
+
+/* ================= ACTION BUTTONS ================= */
+
+.detail-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.detail-actions button {
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.detail-actions button.primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+}
+
+.detail-actions button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.4);
+}
+
+.detail-actions button.secondary {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.detail-actions button.secondary:hover {
+  background: #e2e8f0;
+}
+
+/* ================= MODAL OVERLAY ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+  background: #ffffff;
+  width: 92%;
+  max-width: 420px;
+  border-radius: 22px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  animation: modalFade 0.3s ease;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================= MODAL HEADER ================= */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.modal-close {
+  background: #f1f5f9;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* ================= MODAL CONTENT ================= */
+
+.modal-product {
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+/* ================= FORM ================= */
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #334155;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.modal textarea {
+  min-height: 90px;
+  resize: none;
+}
+
+/* ================= MODAL FOOTER ================= */
+
+.modal-footer {
+  display: flex;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.modal-footer button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .product-detail h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-footer {
+    flex-direction: column;
+  }
+}
